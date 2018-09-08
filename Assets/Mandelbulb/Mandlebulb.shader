@@ -1,4 +1,7 @@
-﻿Shader "Custom/Mandelbulb" {
+﻿// Upgrade NOTE: commented out 'float4x4 _CameraToWorld', a built-in variable
+// Upgrade NOTE: replaced '_CameraToWorld' with 'unity_CameraToWorld'
+
+Shader "Custom/Mandelbulb" {
 Properties {
 }
 SubShader {
@@ -28,7 +31,7 @@ Pass{
 	//float4	_ScreenParams;
 
 	// shader variables set by Unity if declared
-	float4x4	_CameraToWorld;
+	// float4x4	_CameraToWorld;
 
 	// uniforms set in script
 	//float4x4	_CameraToWorldMatrix;
@@ -233,7 +236,7 @@ Pass{
 		// if you choose to pass the camera to world matrix, do NOT use camera.cameraToWorldMatrix
 		// that one uses RHS (file:///C:/Program%20Files/Unity/Editor/Data/Documentation/en/ScriptReference/Camera-cameraToWorldMatrix.html)
 		// Use camera.transform.localToWorldMatrix instead.		
-		float3 wsRay = mul(_CameraToWorld, float4(csRay, 0)); // column-major matrix, so post mult
+		float3 wsRay = mul(unity_CameraToWorld, float4(csRay, 0)); // column-major matrix, so post mult
 
 		return raymarch(_WorldSpaceCameraPos, wsRay);		
 	}

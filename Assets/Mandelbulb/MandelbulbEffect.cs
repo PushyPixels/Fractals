@@ -67,7 +67,7 @@ public class MandelbulbEffect : MonoBehaviour {
         // if you choose to pass the camera to world matrix, do NOT use camera.cameraToWorldMatrix
         // that one uses RHS (file:///C:/Program%20Files/Unity/Editor/Data/Documentation/en/ScriptReference/Camera-cameraToWorldMatrix.html)
         // Use camera.transform.localToWorldMatrix instead.		
-        //fractal.SetMatrix("_CameraToWorldMatrix", c.transform.localToWorldMatrix);
+        fractal.SetMatrix("_CameraToWorldMatrix", c.transform.localToWorldMatrix);
         
         Graphics.Blit(src, dst, fractal);
     }
